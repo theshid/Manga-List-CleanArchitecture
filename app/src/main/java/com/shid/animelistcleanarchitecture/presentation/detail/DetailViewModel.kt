@@ -11,6 +11,8 @@ import com.shid.animelistcleanarchitecture.framework.network.responses.detail.Ch
 import com.shid.animelistcleanarchitecture.framework.network.responses.detail.DetailAnimeResponse
 import com.shid.animelistcleanarchitecture.framework.network.responses.detail.Promo
 import com.shid.animelistcleanarchitecture.core.repository.DetailAnimeRepository
+import com.shid.animelistcleanarchitecture.core.use_cases.SaveFavorite
+import com.shid.animelistcleanarchitecture.core.use_cases.UnsetFavorite
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -20,7 +22,9 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailViewModel @Inject constructor(
     private val repository: DetailAnimeRepository,
-    private val database: AnimeDatabase
+    private val database: AnimeDatabase,
+    private val saveFavorite: SaveFavorite,
+    private val unsetFavorite: UnsetFavorite
 ) : ViewModel() {
     private var _anime = MutableLiveData<DetailAnimeResponse>()
     val anime: LiveData<DetailAnimeResponse>
@@ -53,11 +57,11 @@ class DetailViewModel @Inject constructor(
 
     fun checkIfAnimeIsFavorite(animeId: Int) {
 
-        viewModelScope.launch(Dispatchers.IO){
+        viewModelScope.launch(Dispatchers.IO) {
             val checkAnime = database.animeDao().exists(animeId)
-            Timber.d( "value of anime check:$checkAnime")
+            Timber.d("value of anime check:$checkAnime")
 
-                _isAnimeInDb.postValue(database.animeDao().exists(animeId))
+            _isAnimeInDb.postValue(database.animeDao().exists(animeId))
 
 
             Timber.d("value of anime:${isAnimeInDb.value}")
@@ -67,17 +71,15 @@ class DetailViewModel @Inject constructor(
     }
 
     fun setFavorite(anime: DetailAnimeResponse) {
-        val bookmarkAnime = BookmarkAnime.ModelMapper.from(anime)
-        viewModelScope.launch(Dispatchers.IO){
-            database.animeDao().insertBookmarkAnimes(bookmarkAnime)
+        viewModelScope.launch(Dispatchers.IO) {
+            saveFavorite.invoke(anime)
         }
 
     }
 
     fun unSetFavorite(anime: DetailAnimeResponse) {
-        val bookmarkAnime = BookmarkAnime.ModelMapper.from(anime)
-        viewModelScope.launch(Dispatchers.IO){
-            database.animeDao().unBookmarkAnime(bookmarkAnime)
+        viewModelScope.launch(Dispatchers.IO) {
+            unsetFavorite.invoke(anime)
         }
 
     }

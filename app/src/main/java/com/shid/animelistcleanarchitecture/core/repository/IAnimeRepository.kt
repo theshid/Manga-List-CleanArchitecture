@@ -1,6 +1,8 @@
 package com.shid.animelistcleanarchitecture.core.repository
 
 import com.shid.animelistcleanarchitecture.core.remote.RemoteDataSource
+import com.shid.animelistcleanarchitecture.framework.database.AnimeDatabase
+import com.shid.animelistcleanarchitecture.framework.database.entities.BookmarkAnime
 import com.shid.animelistcleanarchitecture.framework.network.responses.detail.CharactersListResponse
 import com.shid.animelistcleanarchitecture.framework.network.responses.detail.DetailAnimeResponse
 import com.shid.animelistcleanarchitecture.framework.network.responses.detail.Promo
@@ -10,7 +12,8 @@ import javax.inject.Singleton
 
 @Singleton
 class IAnimeRepository @Inject constructor(
-    private val remoteDataSource: RemoteDataSource
+    private val remoteDataSource: RemoteDataSource,
+    private val localDb:AnimeDatabase
 ): AnimeRepository {
 
     override suspend fun getTopAnime(type: String): List<AnimeListResponse> {
@@ -71,6 +74,18 @@ class IAnimeRepository @Inject constructor(
             }
         })
         return videosResult
+    }
+
+    override fun getBookmarks(): List<BookmarkAnime> {
+        return localDb.animeDao().getBookmarkAnimes()
+    }
+
+    override suspend fun addBookmark(bookmarkAnime: BookmarkAnime) {
+        localDb.animeDao().insertBookmarkAnimes(bookmarkAnime)
+    }
+
+    override suspend fun unBookmark(bookmarkAnime: BookmarkAnime) {
+        localDb.animeDao().unBookmarkAnime(bookmarkAnime)
     }
 
 

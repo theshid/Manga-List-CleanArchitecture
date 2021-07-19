@@ -5,7 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.shid.animelistcleanarchitecture.framework.network.responses.main_response.AnimeListResponse
-import com.shid.animelistcleanarchitecture.core.repository.IAnimeRepository
+import com.shid.animelistcleanarchitecture.core.use_cases.GetTopAnimes
+import com.shid.animelistcleanarchitecture.core.use_cases.LoadDayNightStatus
+import com.shid.animelistcleanarchitecture.core.use_cases.SetNightMode
 import com.shid.animelistcleanarchitecture.utils.SavePref
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -15,8 +17,9 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel
 @Inject constructor(
-    private val repository: IAnimeRepository,
-    private val savePref: SavePref
+    private val getTopAnimes: GetTopAnimes,
+    private val setNightMode: SetNightMode,
+    private val loadDayNightStatus: LoadDayNightStatus
 ) : ViewModel() {
 
     private var _animeAiring = MutableLiveData<List<AnimeListResponse>>()
@@ -42,19 +45,19 @@ class HomeViewModel
     init {
         viewModelScope.launch {
             try {
-                val resultAiring = repository.getTopAnime("airing")
+                val resultAiring = getTopAnimes.getTopAnimes("airing")
                 _animeAiring.value = resultAiring
 
-                val resultUpcoming = repository.getTopAnime("upcoming")
+                val resultUpcoming = getTopAnimes.getTopAnimes("upcoming")
                 _animeUpcoming.value = resultUpcoming
 
-                val resultTV = repository.getTopAnime("tv")
+                val resultTV = getTopAnimes.getTopAnimes("tv")
                 _animeTV.value = resultTV
 
-                val resultMovie = repository.getTopAnime("movie")
+                val resultMovie = getTopAnimes.getTopAnimes("movie")
                 _animeMovie.value = resultMovie
 
-                val resultOva = repository.getTopAnime("ova")
+                val resultOva = getTopAnimes.getTopAnimes("ova")
                 _animeOva.value = resultOva
             } catch (e: Throwable) {
                 e.printStackTrace()
@@ -63,10 +66,10 @@ class HomeViewModel
     }
 
     fun setDayNight(status: Boolean) {
-        savePref.setNightMode(state = status)
+        setNightMode.setDayNight(status)
     }
 
     fun loadDayNight(): Boolean {
-        return savePref.loadNightMode()
+        return loadDayNightStatus.loadDayNight()
     }
 }

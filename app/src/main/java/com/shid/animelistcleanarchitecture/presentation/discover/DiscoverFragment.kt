@@ -86,7 +86,7 @@ class DiscoverFragment : BaseFragment() {
     }
 
     private fun setData() {
-        discoverViewModel.setSeason(thisYear, Season.SPRING.value.toLowerCase(Locale.ROOT))
+        discoverViewModel.setSeason(thisYear, Season.SUMMER.value.toLowerCase(Locale.ROOT))
 
         discoverViewModel.animeSeason.observe(viewLifecycleOwner, { anime ->
             if (anime.isNotEmpty()) {

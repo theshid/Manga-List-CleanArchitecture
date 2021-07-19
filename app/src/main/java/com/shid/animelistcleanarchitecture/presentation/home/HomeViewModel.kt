@@ -1,26 +1,19 @@
-package com.shid.mangalist.ui.home
+package com.shid.animelistcleanarchitecture.presentation.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.ExperimentalPagingApi
-import androidx.paging.PagingData
-import androidx.paging.cachedIn
-import com.shid.mangalist.data.local.entities.*
-import com.shid.mangalist.data.remote.response.main_response.AnimeListResponse
-import com.shid.mangalist.data.repository.IAnimeRepository
-import com.shid.mangalist.utils.SavePref
+import com.shid.animelistcleanarchitecture.framework.network.responses.main_response.AnimeListResponse
+import com.shid.animelistcleanarchitecture.core.repository.IAnimeRepository
+import com.shid.animelistcleanarchitecture.utils.SavePref
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@ExperimentalPagingApi
+
 @HiltViewModel
-class HomeViewModel @ExperimentalPagingApi
+class HomeViewModel
 @Inject constructor(
     private val repository: IAnimeRepository,
     private val savePref: SavePref

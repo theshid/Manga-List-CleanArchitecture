@@ -1,10 +1,10 @@
-package com.shid.mangalist.data.local.db
+package com.shid.animelistcleanarchitecture.framework.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.shid.mangalist.data.local.entities.*
+import com.shid.animelistcleanarchitecture.framework.database.entities.BookmarkAnime
 
 @Database(
     entities = [BookmarkAnime::class],

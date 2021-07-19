@@ -1,4 +1,4 @@
-package com.shid.mangalist.utils.custom
+package com.shid.animelistcleanarchitecture.base
 
 import android.app.Activity
 import android.content.Context

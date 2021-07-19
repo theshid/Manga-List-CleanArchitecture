@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="?attr/backgroundColor"
     android:layout_marginTop="?attr/actionBarSize"
-    tools:context=".presentation.ui.home.HomeFragment">
+    tools:context=".presentation.home.HomeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

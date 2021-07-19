@@ -1,6 +1,6 @@
-package com.shid.mangalist.data.repository
+package com.shid.animelistcleanarchitecture.core.repository
 
-import com.shid.mangalist.data.remote.response.main_response.AnimeListResponse
+import com.shid.animelistcleanarchitecture.framework.network.responses.main_response.AnimeListResponse
 
 interface SearchRepository {
     suspend fun getSearchAnime(query: String): List<AnimeListResponse>

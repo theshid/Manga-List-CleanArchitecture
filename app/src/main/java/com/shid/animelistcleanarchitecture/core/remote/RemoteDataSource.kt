@@ -1,10 +1,10 @@
-package com.shid.mangalist.data.remote
+package com.shid.animelistcleanarchitecture.core.remote
 
-import com.shid.mangalist.data.remote.network.ApiServices
-import com.shid.mangalist.data.remote.response.detail.CharactersListResponse
-import com.shid.mangalist.data.remote.response.detail.DetailAnimeResponse
-import com.shid.mangalist.data.remote.response.detail.Promo
-import com.shid.mangalist.data.remote.response.main_response.AnimeListResponse
+import com.shid.animelistcleanarchitecture.framework.network.api.ApiServices
+import com.shid.animelistcleanarchitecture.framework.network.responses.detail.CharactersListResponse
+import com.shid.animelistcleanarchitecture.framework.network.responses.detail.DetailAnimeResponse
+import com.shid.animelistcleanarchitecture.framework.network.responses.detail.Promo
+import com.shid.animelistcleanarchitecture.framework.network.responses.main_response.AnimeListResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject

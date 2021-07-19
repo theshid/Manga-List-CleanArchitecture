@@ -1,11 +1,11 @@
-package com.shid.mangalist.data.remote.network
+package com.shid.animelistcleanarchitecture.framework.network.api
 
-import com.shid.mangalist.data.remote.response.detail.CharactersResponse
-import com.shid.mangalist.data.remote.response.detail.DetailAnimeResponse
-import com.shid.mangalist.data.remote.response.detail.VideosResponse
-import com.shid.mangalist.data.remote.response.search.SearchAnimeResponse
-import com.shid.mangalist.data.remote.response.season.SeasonAnimeRespon
-import com.shid.mangalist.data.remote.response.top.TopAnimeResponse
+import com.shid.animelistcleanarchitecture.framework.network.responses.detail.CharactersResponse
+import com.shid.animelistcleanarchitecture.framework.network.responses.detail.DetailAnimeResponse
+import com.shid.animelistcleanarchitecture.framework.network.responses.detail.VideosResponse
+import com.shid.animelistcleanarchitecture.framework.network.responses.search.SearchAnimeResponse
+import com.shid.animelistcleanarchitecture.framework.network.responses.season.SeasonAnimeResponse
+import com.shid.animelistcleanarchitecture.framework.network.responses.top.TopAnimeResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -28,7 +28,7 @@ interface ApiServices {
     suspend fun getSeasonAnime(
         @Path("year") seasonYear: Int,
         @Path("season") seasonName: String
-    ): SeasonAnimeRespon
+    ): SeasonAnimeResponse
 
     @GET("search/anime?&page=1")
     suspend fun getSearchAnime(@Query("q") query: String): SearchAnimeResponse

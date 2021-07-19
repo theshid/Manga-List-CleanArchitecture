@@ -1,4 +1,4 @@
-package com.shid.mangalist.utils.custom;
+package com.shid.animelistcleanarchitecture.utils.custom;
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
@@ -15,7 +15,7 @@ import android.widget.LinearLayout;
 
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 
-import com.shid.mangalist.R;
+import com.shid.animelistcleanarchitecture.R;
 
 
 public class ExpandableLayout extends FrameLayout {

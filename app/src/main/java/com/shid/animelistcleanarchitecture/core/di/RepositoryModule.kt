@@ -1,15 +1,13 @@
-package com.shid.mangalist.data.di
+package com.shid.animelistcleanarchitecture.core.di
 
-import com.shid.mangalist.data.remote.RemoteDataSource
-import com.shid.mangalist.data.remote.network.ApiServices
-import com.shid.mangalist.data.remote.response.detail.DetailAnimeResponse
-import com.shid.mangalist.data.repository.DetailAnimeRepository
-import com.shid.mangalist.data.repository.SearchAnimeRepository
+import com.shid.animelistcleanarchitecture.core.remote.RemoteDataSource
+import com.shid.animelistcleanarchitecture.framework.network.api.ApiServices
+import com.shid.animelistcleanarchitecture.core.repository.DetailAnimeRepository
+import com.shid.animelistcleanarchitecture.core.repository.SearchAnimeRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityComponent
-import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
@@ -18,16 +16,16 @@ object RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideDetailAnimeRepository(remoteDataSource: RemoteDataSource):DetailAnimeRepository =
+    fun provideDetailAnimeRepository(remoteDataSource: RemoteDataSource): DetailAnimeRepository =
         DetailAnimeRepository.getInstance(remoteDataSource)
 
     @Provides
     @Singleton
-    fun provideSearchAnimeRepository(remoteDataSource: RemoteDataSource):SearchAnimeRepository =
+    fun provideSearchAnimeRepository(remoteDataSource: RemoteDataSource): SearchAnimeRepository =
         SearchAnimeRepository.getInstance(remoteDataSource)
 
     @Provides
     @Singleton
-    fun provideRemoteDataSource(apiServices: ApiServices):RemoteDataSource =
+    fun provideRemoteDataSource(apiServices: ApiServices): RemoteDataSource =
         RemoteDataSource.getInstance(apiServices)
 }

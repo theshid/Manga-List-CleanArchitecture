@@ -1,4 +1,4 @@
-package com.shid.mangalist.ui.detail
+package com.shid.animelistcleanarchitecture.presentation.detail
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.shid.mangalist.R
-import com.shid.mangalist.data.remote.response.detail.CharactersListResponse
-import com.shid.mangalist.utils.custom.CircleImageView
+import com.shid.animelistcleanarchitecture.R
+import com.shid.animelistcleanarchitecture.framework.network.responses.detail.CharactersListResponse
+import de.hdodenhof.circleimageview.CircleImageView
+
 
 class CharacterAdapter() :
     RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
@@ -44,13 +45,11 @@ class CharacterAdapter() :
 
     inner class CharacterViewHolder(itemView:View) :
         RecyclerView.ViewHolder(itemView) {
-        private val imageCharacter:CircleImageView = itemView.findViewById(R.id.image_cast)
+        private val imageCharacter: CircleImageView = itemView.findViewById(R.id.image_cast)
         private val nameCharacter:AppCompatTextView = itemView.findViewById(R.id.name_cast)
         fun bind(character: CharactersListResponse) {
             imageCharacter.load(character.imageUrl)
             nameCharacter.text = character.name
-
-
 
         }
     }

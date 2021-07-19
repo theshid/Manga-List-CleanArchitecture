@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_marginTop="?attr/actionBarSize"
     android:background="?attr/backgroundColor"
-    tools:context=".presentation.ui.favorites.BookmarksFragment">
+    tools:context=".presentation.favorites.BookmarksFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_bookmark"

@@ -1,7 +1,7 @@
-package com.shid.mangalist.ui.more
+package com.shid.animelistcleanarchitecture.presentation.more
 
 import androidx.recyclerview.widget.DiffUtil
-import com.shid.mangalist.data.remote.response.main_response.AnimeListResponse
+import com.shid.animelistcleanarchitecture.framework.network.responses.main_response.AnimeListResponse
 
 object MoreDiffUtils : DiffUtil.ItemCallback<AnimeListResponse>() {
 

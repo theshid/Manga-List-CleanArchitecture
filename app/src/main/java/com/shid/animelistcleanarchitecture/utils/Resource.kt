@@ -1,6 +1,6 @@
-package com.shid.mangalist.utils
+package com.shid.animelistcleanarchitecture.utils
 
-import com.shid.mangalist.utils.enum.Status
+import com.shid.animelistcleanarchitecture.utils.enum.Status
 
 class Resource<T> private constructor(val status: Status, val data: T?, val message: String?) {
 

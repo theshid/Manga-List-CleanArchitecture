@@ -1,4 +1,4 @@
-package com.shid.mangalist.ui.more
+package com.shid.animelistcleanarchitecture.presentation.more
 
 import android.app.Activity
 import android.view.LayoutInflater
@@ -8,9 +8,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.shid.mangalist.R
-import com.shid.mangalist.data.remote.response.main_response.AnimeListResponse
-import me.turkergoksu.lib.PercentageView
+import com.shid.animelistcleanarchitecture.R
+import com.shid.animelistcleanarchitecture.framework.network.responses.main_response.AnimeListResponse
 
 
 class MoreAdapter (private val activity2:Activity,private val showDetail: (id: Int) -> Unit) :

@@ -1,4 +1,4 @@
-package com.shid.mangalist.ui.detail
+package com.shid.animelistcleanarchitecture.presentation.detail
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.shid.mangalist.R
-import com.shid.mangalist.data.remote.response.detail.Promo
+import com.shid.animelistcleanarchitecture.R
+
+import com.shid.animelistcleanarchitecture.framework.network.responses.detail.Promo
 
 class VideoAdapter(private val showVideo: (url: String?) -> Unit) :
     RecyclerView.Adapter<VideoAdapter.VideoViewHolder>() {

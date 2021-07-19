@@ -1,25 +1,24 @@
-package com.shid.mangalist.ui.search
+package com.shid.animelistcleanarchitecture.presentation.search
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.ExperimentalPagingApi
-import com.shid.mangalist.data.remote.response.main_response.AnimeListResponse
-import com.shid.mangalist.data.repository.IAnimeRepository
+import com.shid.animelistcleanarchitecture.framework.network.responses.main_response.AnimeListResponse
+import com.shid.animelistcleanarchitecture.core.repository.IAnimeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class SearchViewModel @ExperimentalPagingApi @Inject constructor(private val repository: IAnimeRepository) :
+class SearchViewModel  @Inject constructor(private val repository: IAnimeRepository) :
     ViewModel() {
 
     private var _animeResult = MutableLiveData<List<AnimeListResponse>>()
     val animeResult: LiveData<List<AnimeListResponse>>
         get() = _animeResult
 
-    @ExperimentalPagingApi
+
     fun setResult(query: String) {
         viewModelScope.launch {
             try {

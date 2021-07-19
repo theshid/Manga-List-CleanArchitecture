@@ -1,10 +1,9 @@
-package com.shid.mangalist.ui.detail
+package com.shid.animelistcleanarchitecture.presentation.detail
 
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,12 +20,13 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.irozon.sneaker.Sneaker
 import com.like.LikeButton
 import com.like.OnLikeListener
-import com.shid.mangalist.MainActivity
-import com.shid.mangalist.R
-import com.shid.mangalist.data.remote.response.detail.CharactersListResponse
-import com.shid.mangalist.databinding.DetailFragmentBinding
+import com.shid.animelistcleanarchitecture.R
+import com.shid.animelistcleanarchitecture.databinding.DetailFragmentBinding
+import com.shid.animelistcleanarchitecture.framework.network.responses.detail.CharactersListResponse
+import com.shid.animelistcleanarchitecture.presentation.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import jp.wasabeef.glide.transformations.BlurTransformation
+import timber.log.Timber
 
 @AndroidEntryPoint
 class DetailFragment : Fragment() {
@@ -194,7 +194,7 @@ class DetailFragment : Fragment() {
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.includedLayout.castList.visibility = View.VISIBLE
         val characterAdapter2 = CharacterAdapter()
-        Log.d("Detail", "size of list:" + (list?.size ?: 0))
+        Timber.d("size of list:" + (list?.size ?: 0))
 
         binding.includedLayout.castList.adapter = characterAdapter2
         characterAdapter2.setData(list)

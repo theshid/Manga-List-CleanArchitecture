@@ -1,4 +1,4 @@
-package com.shid.mangalist.ui.favorites
+package com.shid.animelistcleanarchitecture.presentation.favorites
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,10 +7,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.shid.mangalist.R
-import com.shid.mangalist.data.local.entities.BookmarkAnime
-import com.shid.mangalist.utils.custom.gone
-import com.shid.mangalist.utils.custom.visible
+import com.shid.animelistcleanarchitecture.R
+
+import com.shid.animelistcleanarchitecture.framework.database.entities.BookmarkAnime
+import com.shid.animelistcleanarchitecture.utils.custom.gone
+import com.shid.animelistcleanarchitecture.utils.custom.visible
 import me.turkergoksu.lib.PercentageView
 
 class BookmarkAdapter(private val showDetail: (id: Int) -> Unit) :

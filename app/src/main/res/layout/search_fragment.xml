@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginTop="?attr/actionBarSize"
-    tools:context=".presentation.ui.search.SearchFragment">
+    tools:context=".presentation.search.SearchFragment">
 
 
     <androidx.recyclerview.widget.RecyclerView

@@ -1,4 +1,4 @@
-package com.shid.mangalist.utils.enum
+package com.shid.animelistcleanarchitecture.utils.enum
 
 enum class Season(val value: String) {
     SPRING("Spring"),

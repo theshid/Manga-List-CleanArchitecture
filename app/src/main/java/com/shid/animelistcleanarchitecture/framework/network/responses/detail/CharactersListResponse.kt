@@ -1,4 +1,5 @@
-package com.shid.mangalist.data.remote.response.detail
+package com.shid.animelistcleanarchitecture.framework.network.responses.detail
+
 
 import com.squareup.moshi.Json
 

@@ -1,7 +1,7 @@
 package com.shid.mangalist.data.di
 
-import com.shid.mangalist.data.remote.RemoteDataSource
-import com.shid.mangalist.data.remote.network.ApiServices
+import com.shid.animelistcleanarchitecture.core.remote.RemoteDataSource
+import com.shid.animelistcleanarchitecture.framework.network.api.ApiServices
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
@@ -47,10 +47,10 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideApiServices(retrofit: Retrofit):ApiServices = retrofit.create(ApiServices::class.java)
+    fun provideApiServices(retrofit: Retrofit): ApiServices = retrofit.create(ApiServices::class.java)
 
     @Provides
     @Singleton
-    fun provideRemoteDataSource(services: ApiServices):RemoteDataSource =
+    fun provideRemoteDataSource(services: ApiServices): RemoteDataSource =
         RemoteDataSource.getInstance(services)
 }

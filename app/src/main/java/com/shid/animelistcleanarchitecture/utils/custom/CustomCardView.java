@@ -1,4 +1,4 @@
-package com.shid.mangalist.utils.custom;
+package com.shid.animelistcleanarchitecture.utils.custom;
 
 import android.content.Context;
 import android.util.AttributeSet;

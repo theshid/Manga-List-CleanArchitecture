@@ -1,4 +1,4 @@
-package com.shid.mangalist.utils
+package com.shid.animelistcleanarchitecture.utils
 
 import android.content.Context
 import android.content.SharedPreferences

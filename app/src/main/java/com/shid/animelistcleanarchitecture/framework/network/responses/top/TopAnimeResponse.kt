@@ -1,7 +1,7 @@
-package com.shid.mangalist.data.remote.response.top
+package com.shid.animelistcleanarchitecture.framework.network.responses.top
 
 
-import com.shid.mangalist.data.remote.response.main_response.AnimeListResponse
+import com.shid.animelistcleanarchitecture.framework.network.responses.main_response.AnimeListResponse
 import com.squareup.moshi.Json
 
 data class TopAnimeResponse(

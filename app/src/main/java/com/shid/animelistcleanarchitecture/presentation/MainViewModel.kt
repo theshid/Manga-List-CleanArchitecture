@@ -1,7 +1,7 @@
 package com.shid.mangalist
 
 import androidx.lifecycle.ViewModel
-import com.shid.mangalist.utils.SavePref
+import com.shid.animelistcleanarchitecture.utils.SavePref
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 

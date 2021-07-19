@@ -1,7 +1,7 @@
-package com.shid.mangalist.data.local.db
+package com.shid.animelistcleanarchitecture.framework.database
 
 import androidx.room.*
-import com.shid.mangalist.data.local.entities.BookmarkAnime
+import com.shid.animelistcleanarchitecture.framework.database.entities.BookmarkAnime
 
 @Dao
 interface AnimeDao {

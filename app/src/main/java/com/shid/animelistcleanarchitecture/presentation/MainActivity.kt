@@ -1,4 +1,4 @@
-package com.shid.mangalist
+package com.shid.animelistcleanarchitecture.presentation
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -11,14 +11,16 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.shid.mangalist.utils.custom.BackgroundSwitcherView
+import com.shid.animelistcleanarchitecture.R
+import com.shid.animelistcleanarchitecture.utils.custom.BackgroundSwitcherView
+import com.shid.mangalist.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var overlayLayout: BackgroundSwitcherView
     private lateinit var toolbar:MaterialToolbar
-    private val viewModel:MainViewModel by viewModels()
+    private val viewModel: MainViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

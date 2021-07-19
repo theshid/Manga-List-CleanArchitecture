@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.shid.mangalist.ui.home.HomeFragment"
+        android:name="com.shid.animelistcleanarchitecture.presentation.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home">
         <action
@@ -35,7 +35,7 @@
 
     <fragment
         android:id="@+id/moreFragment"
-        android:name="com.shid.mangalist.ui.more.MoreFragment"
+        android:name="com.shid.animelistcleanarchitecture.presentation.more.MoreFragment"
         android:label="@string/more"
         tools:layout="@layout/more_fragment2">
         <argument
@@ -59,7 +59,7 @@
 
     <fragment
         android:id="@+id/detailAnimeFragment"
-        android:name="com.shid.mangalist.ui.detail.DetailFragment"
+        android:name="com.shid.animelistcleanarchitecture.presentation.detail.DetailFragment"
         android:label="@string/detail"
         tools:layout="@layout/detail_fragment">
         <argument
@@ -79,7 +79,7 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.shid.mangalist.ui.discover.DiscoverFragment"
+        android:name="com.shid.animelistcleanarchitecture.presentation.discover.DiscoverFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_discovery" >
         <action
@@ -93,7 +93,7 @@
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.shid.mangalist.ui.favorites.BookmarksFragment"
+        android:name="com.shid.animelistcleanarchitecture.presentation.favorites.BookmarksFragment"
         android:label="Bookmarks"
         tools:layout="@layout/fragment_bookmark" >
         <action
@@ -106,7 +106,7 @@
     </fragment>
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.shid.mangalist.ui.search.SearchFragment"
+        android:name="com.shid.animelistcleanarchitecture.presentation.search.SearchFragment"
         android:label="Search Anime"
         tools:layout="@layout/search_fragment" >
         <action

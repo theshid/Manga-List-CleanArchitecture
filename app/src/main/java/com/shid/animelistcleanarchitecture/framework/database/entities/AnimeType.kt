@@ -1,4 +1,4 @@
-package com.shid.mangalist.data.local.entities
+package com.shid.animelistcleanarchitecture.framework.database.entities
 
 interface AnimeType {
 }

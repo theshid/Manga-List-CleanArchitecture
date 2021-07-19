@@ -9,7 +9,7 @@
     app:cardElevation="8dp"
     app:cardMaxElevation="8dp">
 
-    <com.shid.mangalist.utils.custom.CircleImageView
+    <com.shid.animelistcleanarchitecture.utils.custom.CircleImageView
         android:id="@+id/image_cast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

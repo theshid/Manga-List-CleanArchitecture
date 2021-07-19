@@ -1,4 +1,4 @@
-package com.shid.mangalist.ui.discover
+package com.shid.animelistcleanarchitecture.presentation.discover
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,9 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import com.shid.mangalist.R
-import com.shid.mangalist.data.remote.response.main_response.AnimeListResponse
-import com.shid.mangalist.ui.home.HomeAdapter
+import com.shid.animelistcleanarchitecture.R
+import com.shid.animelistcleanarchitecture.framework.network.responses.main_response.AnimeListResponse
 import me.turkergoksu.lib.PercentageView
 
 class DiscoverAdapter (private val showDetail: (id: Int) -> Unit) :

@@ -1,18 +1,16 @@
-package com.shid.mangalist.ui.home
+package com.shid.animelistcleanarchitecture.presentation.home
 
 import android.os.Bundle
 import android.view.*
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.paging.ExperimentalPagingApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
@@ -21,19 +19,19 @@ import com.asksira.loopingviewpager.LoopingViewPager
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.shid.mangalist.MainActivity
-import com.shid.mangalist.R
-import com.shid.mangalist.data.remote.response.main_response.AnimeListResponse
-import com.shid.mangalist.utils.enum.More
+import com.shid.animelistcleanarchitecture.R
+import com.shid.animelistcleanarchitecture.presentation.MainActivity
+import com.shid.animelistcleanarchitecture.framework.network.responses.main_response.AnimeListResponse
+import com.shid.animelistcleanarchitecture.utils.enum.More
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import www.sanju.zoomrecyclerlayout.ZoomRecyclerLayout
 
-@ExperimentalPagingApi
+
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
-    @ExperimentalPagingApi
+
     private val homeViewModel: HomeViewModel by viewModels()
 
     private lateinit var topAiringAdapter: HomeAdapter
@@ -77,7 +75,7 @@ class HomeFragment : Fragment() {
 
     }
 
-    @ExperimentalPagingApi
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -260,7 +258,7 @@ class HomeFragment : Fragment() {
     }
 
 
-    @ExperimentalPagingApi
+
     private fun fetchTopAnimes() {
         lifecycleScope.launch {
             homeViewModel.animeAiring.observe(viewLifecycleOwner, { anime ->
@@ -322,7 +320,7 @@ class HomeFragment : Fragment() {
 
     }
 
-    @ExperimentalPagingApi
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             R.id.day_dark -> {
@@ -335,7 +333,7 @@ class HomeFragment : Fragment() {
 
     }
 
-    @ExperimentalPagingApi
+
     private fun setUIMode(item: MenuItem, checked: Boolean) {
         if (checked) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)

@@ -1,4 +1,4 @@
-package com.shid.mangalist.ui.favorites
+package com.shid.animelistcleanarchitecture.presentation.favorites
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,27 +9,26 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import androidx.paging.ExperimentalPagingApi
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.shid.mangalist.MainActivity
-import com.shid.mangalist.R
-import com.shid.mangalist.databinding.FragmentBookmarkBinding
-import com.shid.mangalist.utils.custom.visible
+import com.shid.animelistcleanarchitecture.R
+import com.shid.animelistcleanarchitecture.databinding.FragmentBookmarkBinding
+import com.shid.animelistcleanarchitecture.presentation.MainActivity
+import com.shid.animelistcleanarchitecture.utils.custom.visible
 import dagger.hilt.android.AndroidEntryPoint
 
-@ExperimentalPagingApi
+
 @AndroidEntryPoint
 class BookmarksFragment : Fragment() {
 
     private var _binding: FragmentBookmarkBinding? = null
     private val binding get() = _binding!!
 
-    @ExperimentalPagingApi
+
     private val bookmarkViewModel: BookmarksViewModel by viewModels()
     private lateinit var adapter: BookmarkAdapter
 
-    @ExperimentalPagingApi
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

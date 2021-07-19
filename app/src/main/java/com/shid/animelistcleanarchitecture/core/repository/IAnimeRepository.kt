@@ -1,20 +1,17 @@
-package com.shid.mangalist.data.repository
+package com.shid.animelistcleanarchitecture.core.repository
 
-import androidx.paging.ExperimentalPagingApi
-
-import com.shid.mangalist.data.remote.RemoteDataSource
-import com.shid.mangalist.data.remote.response.detail.CharactersListResponse
-import com.shid.mangalist.data.remote.response.detail.DetailAnimeResponse
-import com.shid.mangalist.data.remote.response.detail.Promo
-import com.shid.mangalist.data.remote.response.main_response.AnimeListResponse
+import com.shid.animelistcleanarchitecture.core.remote.RemoteDataSource
+import com.shid.animelistcleanarchitecture.framework.network.responses.detail.CharactersListResponse
+import com.shid.animelistcleanarchitecture.framework.network.responses.detail.DetailAnimeResponse
+import com.shid.animelistcleanarchitecture.framework.network.responses.detail.Promo
+import com.shid.animelistcleanarchitecture.framework.network.responses.main_response.AnimeListResponse
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@ExperimentalPagingApi
 @Singleton
 class IAnimeRepository @Inject constructor(
     private val remoteDataSource: RemoteDataSource
-):AnimeRepository {
+): AnimeRepository {
 
     override suspend fun getTopAnime(type: String): List<AnimeListResponse> {
         lateinit var animeResult: List<AnimeListResponse>

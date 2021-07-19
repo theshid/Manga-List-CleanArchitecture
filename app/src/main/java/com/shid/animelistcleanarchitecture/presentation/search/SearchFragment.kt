@@ -1,7 +1,6 @@
-package com.shid.mangalist.ui.search
+package com.shid.animelistcleanarchitecture.presentation.search
 
 import android.annotation.SuppressLint
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -10,24 +9,18 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.paging.ExperimentalPagingApi
-import androidx.recyclerview.widget.RecyclerView
-import com.airbnb.lottie.LottieAnimationView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.shid.mangalist.MainActivity
-import com.shid.mangalist.R
-import com.shid.mangalist.databinding.SearchFragmentBinding
-import com.shid.mangalist.ui.discover.DiscoverAdapter
-import com.shid.mangalist.ui.discover.DiscoverFragmentDirections
-import com.shid.mangalist.ui.discover.DiscoverViewModel
-import com.shid.mangalist.utils.custom.gone
-import com.shid.mangalist.utils.custom.visible
+import com.shid.animelistcleanarchitecture.R
+import com.shid.animelistcleanarchitecture.databinding.SearchFragmentBinding
+import com.shid.animelistcleanarchitecture.presentation.MainActivity
+import com.shid.animelistcleanarchitecture.presentation.discover.DiscoverAdapter
+import com.shid.animelistcleanarchitecture.utils.custom.gone
+import com.shid.animelistcleanarchitecture.utils.custom.visible
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SearchFragment : Fragment() {
 
-    @ExperimentalPagingApi
     private val searchViewModel: SearchViewModel by viewModels()
     private lateinit var adapter: DiscoverAdapter
     private lateinit var loading: View
@@ -76,8 +69,6 @@ class SearchFragment : Fragment() {
         bottomNav.gone()
     }
 
-
-    @ExperimentalPagingApi
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.search_menu, menu)

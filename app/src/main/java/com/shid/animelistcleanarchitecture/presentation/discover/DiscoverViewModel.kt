@@ -1,17 +1,16 @@
-package com.shid.mangalist.ui.discover
+package com.shid.animelistcleanarchitecture.presentation.discover
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.ExperimentalPagingApi
-import com.shid.mangalist.data.remote.response.main_response.AnimeListResponse
-import com.shid.mangalist.data.repository.IAnimeRepository
+import com.shid.animelistcleanarchitecture.framework.network.responses.main_response.AnimeListResponse
+import com.shid.animelistcleanarchitecture.core.repository.IAnimeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@ExperimentalPagingApi
+
 @HiltViewModel
 class DiscoverViewModel @Inject constructor( private val repository: IAnimeRepository) : ViewModel() {
 

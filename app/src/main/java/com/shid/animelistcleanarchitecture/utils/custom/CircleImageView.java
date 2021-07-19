@@ -1,4 +1,4 @@
-package com.shid.mangalist.utils.custom;
+package com.shid.animelistcleanarchitecture.utils.custom;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -22,7 +22,8 @@ import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;
 import androidx.appcompat.widget.AppCompatImageView;
-import com.shid.mangalist.R;
+
+import com.shid.animelistcleanarchitecture.R;
 
 
 public class CircleImageView extends AppCompatImageView {

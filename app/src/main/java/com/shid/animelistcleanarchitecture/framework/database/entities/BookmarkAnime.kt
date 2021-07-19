@@ -1,11 +1,10 @@
-package com.shid.mangalist.data.local.entities
+package com.shid.animelistcleanarchitecture.framework.database.entities
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.shid.mangalist.data.remote.response.detail.DetailAnimeResponse
-import com.shid.mangalist.data.remote.response.main_response.AnimeListResponse
+import com.shid.animelistcleanarchitecture.framework.network.responses.detail.DetailAnimeResponse
 import kotlinx.parcelize.Parcelize
 
 @Entity(tableName = "bookmark_anime")

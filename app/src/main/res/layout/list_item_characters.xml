@@ -7,7 +7,7 @@
     android:layout_marginEnd="10dp">
 
 
-    <com.shid.mangalist.utils.custom.CircleImageView
+    <com.shid.animelistcleanarchitecture.utils.custom.CircleImageView
         android:id="@+id/profile_image"
         android:layout_width="@dimen/profile_item_image_size"
         android:layout_height="@dimen/profile_item_image_size"

@@ -1,14 +1,14 @@
-package com.shid.mangalist.data.repository
+package com.shid.animelistcleanarchitecture.core.repository
 
-import com.shid.mangalist.data.remote.RemoteDataSource
-import com.shid.mangalist.data.remote.response.main_response.AnimeListResponse
+import com.shid.animelistcleanarchitecture.core.remote.RemoteDataSource
+import com.shid.animelistcleanarchitecture.framework.network.responses.main_response.AnimeListResponse
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class SearchAnimeRepository @Inject constructor(
     private val remoteDataSource: RemoteDataSource
-):SearchRepository{
+): SearchRepository {
 
     companion object {
         @Volatile

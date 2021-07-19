@@ -1,7 +1,7 @@
-package com.shid.mangalist.data.di
+package com.shid.animelistcleanarchitecture.core.di
 
 import android.content.Context
-import com.shid.mangalist.data.local.db.AnimeDatabase
+import com.shid.animelistcleanarchitecture.framework.database.AnimeDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -15,7 +15,7 @@ import javax.inject.Singleton
 object DatabaseModule {
 @Singleton
 @Provides
-fun provideDatabase(@ApplicationContext context: Context):AnimeDatabase =
+fun provideDatabase(@ApplicationContext context: Context): AnimeDatabase =
     AnimeDatabase.getInstance(context)
 
 }

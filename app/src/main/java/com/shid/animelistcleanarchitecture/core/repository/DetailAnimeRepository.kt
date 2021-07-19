@@ -1,19 +1,16 @@
-package com.shid.mangalist.data.repository
+package com.shid.animelistcleanarchitecture.core.repository
 
-import com.shid.mangalist.data.local.db.AnimeDatabase
-import com.shid.mangalist.data.remote.RemoteDataSource
-import com.shid.mangalist.data.remote.network.ApiServices
-import com.shid.mangalist.data.remote.response.detail.CharactersListResponse
-import com.shid.mangalist.data.remote.response.detail.DetailAnimeResponse
-import com.shid.mangalist.data.remote.response.detail.Promo
-import com.shid.mangalist.data.remote.response.main_response.AnimeListResponse
+import com.shid.animelistcleanarchitecture.core.remote.RemoteDataSource
+import com.shid.animelistcleanarchitecture.framework.network.responses.detail.CharactersListResponse
+import com.shid.animelistcleanarchitecture.framework.network.responses.detail.DetailAnimeResponse
+import com.shid.animelistcleanarchitecture.framework.network.responses.detail.Promo
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class DetailAnimeRepository @Inject constructor(
     private val remoteDataSource: RemoteDataSource
-):DetailRepository {
+): DetailRepository {
 
     companion object {
         @Volatile

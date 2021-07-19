@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_marginTop="?attr/actionBarSize"
     android:background="?attr/backgroundColor"
-    tools:context=".presentation.ui.discover.DiscoverFragment">
+    tools:context=".presentation.discover.DiscoverFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_anime_season"

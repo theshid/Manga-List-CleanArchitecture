@@ -1,4 +1,4 @@
-package com.shid.mangalist.utils.enum
+package com.shid.animelistcleanarchitecture.utils.enum
 
 enum class More(val type:String) {
     AIRING("airing"),

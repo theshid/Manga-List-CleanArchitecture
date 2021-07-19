@@ -1,28 +1,23 @@
-package com.shid.mangalist.ui.discover
+package com.shid.animelistcleanarchitecture.presentation.discover
 
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.paging.ExperimentalPagingApi
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.shid.mangalist.MainActivity
-import com.shid.mangalist.R
-import com.shid.mangalist.databinding.FragmentDiscoveryBinding
-import com.shid.mangalist.utils.custom.BaseFragment
-import com.shid.mangalist.utils.custom.gone
-import com.shid.mangalist.utils.custom.visible
-import com.shid.mangalist.utils.enum.Season
+import com.shid.animelistcleanarchitecture.R
+import com.shid.animelistcleanarchitecture.databinding.FragmentDiscoveryBinding
+import com.shid.animelistcleanarchitecture.presentation.MainActivity
+import com.shid.animelistcleanarchitecture.base.BaseFragment
+import com.shid.animelistcleanarchitecture.utils.custom.gone
+import com.shid.animelistcleanarchitecture.utils.custom.visible
+import com.shid.animelistcleanarchitecture.utils.enum.Season
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
-import kotlin.properties.Delegates
 
-@ExperimentalPagingApi
+
 @AndroidEntryPoint
 class DiscoverFragment : BaseFragment() {
 
@@ -105,7 +100,7 @@ class DiscoverFragment : BaseFragment() {
         }
     }
 
-    @ExperimentalPagingApi
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu_spring -> refreshList(Season.SPRING)

@@ -1,21 +1,20 @@
-package com.shid.mangalist.ui.detail
+package com.shid.animelistcleanarchitecture.presentation.detail
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.shid.mangalist.data.local.db.AnimeDatabase
-import com.shid.mangalist.data.local.entities.BookmarkAnime
-import com.shid.mangalist.data.remote.response.detail.CharactersListResponse
-import com.shid.mangalist.data.remote.response.detail.DetailAnimeResponse
-import com.shid.mangalist.data.remote.response.detail.Promo
-import com.shid.mangalist.data.remote.response.main_response.AnimeListResponse
-import com.shid.mangalist.data.repository.DetailAnimeRepository
+import com.shid.animelistcleanarchitecture.framework.database.AnimeDatabase
+import com.shid.animelistcleanarchitecture.framework.database.entities.BookmarkAnime
+import com.shid.animelistcleanarchitecture.framework.network.responses.detail.CharactersListResponse
+import com.shid.animelistcleanarchitecture.framework.network.responses.detail.DetailAnimeResponse
+import com.shid.animelistcleanarchitecture.framework.network.responses.detail.Promo
+import com.shid.animelistcleanarchitecture.core.repository.DetailAnimeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import okhttp3.Dispatcher
+import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
@@ -56,12 +55,12 @@ class DetailViewModel @Inject constructor(
 
         viewModelScope.launch(Dispatchers.IO){
             val checkAnime = database.animeDao().exists(animeId)
-            Log.d("Detail", "value of anime check:$checkAnime")
+            Timber.d( "value of anime check:$checkAnime")
 
                 _isAnimeInDb.postValue(database.animeDao().exists(animeId))
 
 
-            Log.d("Detail", "value of anime:${isAnimeInDb.value}")
+            Timber.d("value of anime:${isAnimeInDb.value}")
         }
 
 

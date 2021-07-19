@@ -1,12 +1,9 @@
-package com.shid.mangalist.data.repository
+package com.shid.animelistcleanarchitecture.core.repository
 
-import androidx.paging.PagingData
-import com.shid.mangalist.data.local.entities.*
-import com.shid.mangalist.data.remote.response.detail.CharactersListResponse
-import com.shid.mangalist.data.remote.response.detail.DetailAnimeResponse
-import com.shid.mangalist.data.remote.response.detail.Promo
-import com.shid.mangalist.data.remote.response.main_response.AnimeListResponse
-import kotlinx.coroutines.flow.Flow
+import com.shid.animelistcleanarchitecture.framework.network.responses.detail.CharactersListResponse
+import com.shid.animelistcleanarchitecture.framework.network.responses.detail.DetailAnimeResponse
+import com.shid.animelistcleanarchitecture.framework.network.responses.detail.Promo
+import com.shid.animelistcleanarchitecture.framework.network.responses.main_response.AnimeListResponse
 
 interface AnimeRepository {
 

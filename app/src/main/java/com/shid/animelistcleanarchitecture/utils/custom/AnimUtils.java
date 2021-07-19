@@ -1,4 +1,4 @@
-package com.shid.mangalist.utils.custom;
+package com.shid.animelistcleanarchitecture.utils.custom;
 
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;

@@ -1,4 +1,4 @@
-package com.shid.mangalist.ui.home
+package com.shid.animelistcleanarchitecture.presentation.home
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,8 +8,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import coil.load
 import com.asksira.loopingviewpager.LoopingPagerAdapter
-import com.shid.mangalist.R
-import com.shid.mangalist.data.remote.response.main_response.AnimeListResponse
+import com.shid.animelistcleanarchitecture.R
+import com.shid.animelistcleanarchitecture.framework.network.responses.main_response.AnimeListResponse
 
 class LoopAnimeAdapter(
     context: Context,

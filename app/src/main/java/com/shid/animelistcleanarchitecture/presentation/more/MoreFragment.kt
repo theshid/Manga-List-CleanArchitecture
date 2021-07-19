@@ -1,4 +1,4 @@
-package com.shid.mangalist.ui.more
+package com.shid.animelistcleanarchitecture.presentation.more
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,15 +8,14 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.paging.ExperimentalPagingApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.shid.mangalist.MainActivity
-import com.shid.mangalist.R
-import com.shid.mangalist.databinding.MoreFragment2Binding
-import com.shid.mangalist.utils.custom.BaseFragment
-import com.shid.mangalist.utils.custom.gone
+import com.shid.animelistcleanarchitecture.R
+import com.shid.animelistcleanarchitecture.databinding.MoreFragment2Binding
+import com.shid.animelistcleanarchitecture.presentation.MainActivity
+import com.shid.animelistcleanarchitecture.base.BaseFragment
+import com.shid.animelistcleanarchitecture.utils.custom.gone
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import www.sanju.zoomrecyclerlayout.ZoomRecyclerLayout
@@ -27,7 +26,7 @@ class MoreFragment : BaseFragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: MoreAdapter
 
-    private var _binding:MoreFragment2Binding?=null
+    private var _binding: MoreFragment2Binding?=null
     private val binding get() = _binding!!
 
 
@@ -36,7 +35,6 @@ class MoreFragment : BaseFragment() {
     }
 
 
-    @ExperimentalPagingApi
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -49,7 +47,6 @@ class MoreFragment : BaseFragment() {
     }
 
 
-    @ExperimentalPagingApi
     private fun setView(type: String) {
         moreViewModel.setType(type)
         setRecyclerView()
@@ -100,7 +97,7 @@ class MoreFragment : BaseFragment() {
     }
 
     private fun setSnapHelper() {
-        val snapHelper = com.shid.mangalist.utils.custom.PagerSnapHelper { position ->
+        val snapHelper = com.shid.animelistcleanarchitecture.utils.custom.PagerSnapHelper { position ->
 
             val anime = adapter.getAnimeItem(position)
             (activity as MainActivity).updateBackground(anime.imageUrl)

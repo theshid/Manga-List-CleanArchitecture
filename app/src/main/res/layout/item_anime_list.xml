@@ -36,8 +36,8 @@
 
                     <me.turkergoksu.lib.PercentageView
                         android:id="@+id/percentageView"
-                        android:layout_width="@dimen/_40sdp"
-                        android:layout_height="@dimen/_40sdp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:fontFamily="@font/arkhip_font"
                         app:animDuration="1500"
                         app:centerColor="#f7efe2"

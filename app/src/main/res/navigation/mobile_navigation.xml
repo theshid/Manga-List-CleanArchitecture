@@ -40,7 +40,7 @@
         tools:layout="@layout/more_fragment2">
         <argument
             android:name="type"
-            app:argType="com.shid.mangalist.utils.enum.More" />
+            app:argType="com.shid.animelistcleanarchitecture.utils.enum.More" />
         <action
             android:id="@+id/action_moreFragment_to_detailAnimeFragment"
             app:destination="@id/detailAnimeFragment"

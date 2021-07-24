@@ -23,6 +23,7 @@ import com.like.OnLikeListener
 import com.shid.animelistcleanarchitecture.R
 import com.shid.animelistcleanarchitecture.databinding.DetailFragmentBinding
 import com.shid.animelistcleanarchitecture.framework.network.responses.detail.CharactersListResponse
+import com.shid.animelistcleanarchitecture.framework.network.responses.detail.DetailAnimeResponse
 import com.shid.animelistcleanarchitecture.presentation.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import jp.wasabeef.glide.transformations.BlurTransformation
@@ -43,7 +44,6 @@ class DetailFragment : Fragment() {
 
     companion object {
         fun newInstance() = DetailFragment()
-        const val TAG = "LibraryFragment"
 
     }
 
@@ -51,23 +51,22 @@ class DetailFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = DetailFragmentBinding.inflate(inflater, container, false)
         val view: View = binding.root
-        setUi(view)
+        setUi()
         return view
     }
 
-    private fun setUi(view: View) {
+    private fun setUi() {
         val bottomNav = (activity as MainActivity).findViewById<BottomNavigationView>(R.id.nav_view)
         bottomNav.visibility = View.GONE
 
         val view = (activity as MainActivity).findViewById<ConstraintLayout>(R.id.container)
-        view.fitsSystemWindows = false
-        view.setPadding(0, 0, 0, 0)
+        setView(view)
 
         binding.expandButton.setOnClickListener(View.OnClickListener {
-            handleExpandAction(view)
+            handleExpandAction()
         })
         binding.starButton.setOnLikeListener(object : OnLikeListener {
             override fun liked(likeButton: LikeButton?) {
@@ -89,18 +88,27 @@ class DetailFragment : Fragment() {
         })
     }
 
+    private fun setView(view: View) {
+        view.fitsSystemWindows = true
+        view.setPadding(0, 0, 0, 0)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val animeId = DetailFragmentArgs.fromBundle(requireArguments()).anime
-        detailViewModel.checkIfAnimeIsFavorite(animeId)
-        detailViewModel.setDetailAnime(animeId)
 
+        setData(animeId)
         checkIfAnimeIsInDb()
         setAdapters()
         fetchAnimeDetail()
         fetchCast()
         fetchVideos()
 
+    }
+
+    private fun setData(id: Int) {
+        detailViewModel.checkIfAnimeIsFavorite(id)
+        detailViewModel.setDetailAnime(id)
     }
 
     private fun setAdapters() {
@@ -120,53 +128,57 @@ class DetailFragment : Fragment() {
         anime_id?.let { detailViewModel.setDetailAnime(it) }
         detailViewModel.anime.observe(viewLifecycleOwner, Observer { it ->
 
-            binding.posterImage.load(it.imageUrl)
-            anime_id = it.id
-            Glide.with(binding.transformationImage.context).load(it.imageUrl)
-                .apply(RequestOptions.bitmapTransform(BlurTransformation(25, 3)))
-                .into(binding.transformationImage)
-
-            if (it.score.toString() == "null") {
-                _binding?.txtScore?.text = "N/A"
-            } else {
-                _binding?.txtScore?.text = it.score.toString()
-            }
-
-            _binding?.rank?.text = it.popularity.toString()
-            binding.animeTitle.text = it.title
-            binding.txtRuntime.text = it.synopsis
-            if (it.episodes.toString() == "null") {
-                binding.includedLayout.infoAnimeEpisodes.text = "N/A"
-            } else {
-                binding.includedLayout.infoAnimeEpisodes.text = it.episodes.toString()
-            }
-
-            binding.includedLayout.infoAnimeMembers.text = it.members.toString()
-            binding.includedLayout.infoAnimeTitle.text = it.title
-            binding.includedLayout.infoAnimePremier.text = it.premiered
-            binding.includedLayout.infoAnimeStatus.text = it.status
-            binding.includedLayout.infoAnimePopularity.text = it.popularity.toString()
-            binding.includedLayout.infoAnimeType.text = it.type
-
-            it.genres.let {
-                for (genre in it.indices) {
-                    val params: LinearLayout.LayoutParams = LinearLayout.LayoutParams(
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT
-                    )
-                    params.setMargins(0, 0, 16, 0)
-                    val genreTextView = TextView(requireContext()).apply {
-                        setBackgroundResource(R.drawable.bg_genres)
-                        layoutParams = params
-                        setTextColor(Color.parseColor("#FFFFFF"))
-                        text = it[genre].name.toString()
-                    }
-                    binding.listGenres.addView(genreTextView)
-
-                }
-            }
+           setFragmentUI(it)
         })
 
+    }
+
+    private fun setFragmentUI(data:DetailAnimeResponse){
+        binding.posterImage.load(data.imageUrl)
+        anime_id = data.id
+        Glide.with(binding.transformationImage.context).load(data.imageUrl)
+            .apply(RequestOptions.bitmapTransform(BlurTransformation(25, 3)))
+            .into(binding.transformationImage)
+
+        if (data.score.toString() == "null") {
+            _binding?.txtScore?.text = "N/A"
+        } else {
+            _binding?.txtScore?.text = data.score.toString()
+        }
+
+        _binding?.rank?.text = data.popularity.toString()
+        binding.animeTitle.text = data.title
+        binding.txtRuntime.text = data.synopsis
+        if (data.episodes.toString() == "null") {
+            binding.includedLayout.infoAnimeEpisodes.text = "N/A"
+        } else {
+            binding.includedLayout.infoAnimeEpisodes.text = data.episodes.toString()
+        }
+
+        binding.includedLayout.infoAnimeMembers.text = data.members.toString()
+        binding.includedLayout.infoAnimeTitle.text = data.title
+        binding.includedLayout.infoAnimePremier.text = data.premiered
+        binding.includedLayout.infoAnimeStatus.text = data.status
+        binding.includedLayout.infoAnimePopularity.text = data.popularity.toString()
+        binding.includedLayout.infoAnimeType.text = data.type
+
+        data.genres.let {
+            for (genre in it.indices) {
+                val params: LinearLayout.LayoutParams = LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT
+                )
+                params.setMargins(0, 0, 16, 0)
+                val genreTextView = TextView(requireContext()).apply {
+                    setBackgroundResource(R.drawable.bg_genres)
+                    layoutParams = params
+                    setTextColor(Color.parseColor("#FFFFFF"))
+                    text = it[genre].name.toString()
+                }
+                binding.listGenres.addView(genreTextView)
+
+            }
+        }
     }
 
     private fun fetchCast() {
@@ -211,7 +223,7 @@ class DetailFragment : Fragment() {
         }
     }
 
-    private fun handleExpandAction(view: View) {
+    private fun handleExpandAction() {
 
         if (binding.includedLayout.expandableLayout.isExpanded) {
             binding.expandButton.text = getString(R.string.read_more)

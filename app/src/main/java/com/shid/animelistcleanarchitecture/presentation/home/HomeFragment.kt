@@ -20,8 +20,11 @@ import com.facebook.shimmer.ShimmerFrameLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.shid.animelistcleanarchitecture.R
+import com.shid.animelistcleanarchitecture.databinding.FragmentHomeBinding
 import com.shid.animelistcleanarchitecture.presentation.MainActivity
 import com.shid.animelistcleanarchitecture.framework.network.responses.main_response.AnimeListResponse
+import com.shid.animelistcleanarchitecture.utils.custom.gone
+import com.shid.animelistcleanarchitecture.utils.custom.visible
 import com.shid.animelistcleanarchitecture.utils.enum.More
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -39,15 +42,12 @@ class HomeFragment : Fragment() {
     private lateinit var topTvAdapter: HomeAdapter
     private lateinit var topMovieAdapter: HomeAdapter
 
-
     private lateinit var airingRecyclerView: RecyclerView
     private lateinit var upcomingRecyclerView: RecyclerView
     private lateinit var tvRecyclerView: RecyclerView
     private lateinit var movieRecyclerView: RecyclerView
 
 
-    private lateinit var titleAiring: TextView
-    private lateinit var txt_moreAiring: TextView
     private lateinit var layoutBottomSheet: View
     private lateinit var viewPager: LoopingViewPager
     private lateinit var viewPagerAdapter: LoopingPagerAdapter<AnimeListResponse>
@@ -67,7 +67,8 @@ class HomeFragment : Fragment() {
     private lateinit var progressViewAiring: ShimmerFrameLayout
     private lateinit var progressViewOva: ShimmerFrameLayout
 
-    private lateinit var searchBox: TextView
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -80,40 +81,39 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val view = (activity as MainActivity).findViewById<ConstraintLayout>(R.id.container)
-        view.fitsSystemWindows = true
-        view.setPadding(0,0,0,0)
+        val root = binding.root
+        fixActionActionBar()
         configureViews(root)
         setBottomHomeFragment()
         setVisibility()
         fetchTopAnimes()
-
         clickListeners()
-
-
         return root
     }
 
+    private fun fixActionActionBar() {
+        val view = (activity as MainActivity).findViewById<ConstraintLayout>(R.id.container)
+        view.fitsSystemWindows = true
+        view.setPadding(0, 0, 0, 0)
+    }
+
     private fun setVisibility() {
-        txt_moreAiring.visibility = View.GONE
-        titleAiring.visibility = View.GONE
+        binding.moreAiring.gone()
+        binding.topAiringText.gone()
 
-        progressViewOva.visibility = View.VISIBLE
-        progressViewAiring.visibility = View.VISIBLE
-
+        binding.progressViewAiring.visible()
+        progressViewOva.visible()
     }
 
     private fun configureViews(view: View) {
         val bottomNav = (activity as MainActivity).findViewById<BottomNavigationView>(R.id.nav_view)
-        bottomNav.visibility = View.VISIBLE
+        bottomNav.visible()
         (activity as MainActivity).clearBackground()
-        txt_moreAiring = view.findViewById(R.id.more_airing)
-        titleAiring = view.findViewById(R.id.top_airing_text)
 
-        progressViewAiring = view.findViewById(R.id.progress_view_airing)
+        /*progressViewAiring = view.findViewById(R.id.progress_view_airing)*/
         progressViewOva = view.findViewById(R.id.progress_view_ova)
 
         imgTrending = view.findViewById(R.id.img_trending)
@@ -146,7 +146,6 @@ class HomeFragment : Fragment() {
         val linearLayoutManager4 = ZoomRecyclerLayout(requireContext())
         linearLayoutManager4.orientation = LinearLayoutManager.HORIZONTAL
 
-        searchBox = view.findViewById(R.id.searchText)
 
         airingRecyclerView = view.findViewById<RecyclerView>(R.id.rv_top_airing)
         airingRecyclerView.layoutManager = linearLayoutManager
@@ -190,7 +189,8 @@ class HomeFragment : Fragment() {
     private fun setBottomHomeFragment() {
 
         bottomSheetBehavior = BottomSheetBehavior.from(layoutBottomSheet)
-        bottomSheetBehavior!!.addBottomSheetCallback(object :BottomSheetBehavior.BottomSheetCallback(){
+        bottomSheetBehavior!!.addBottomSheetCallback(object :
+            BottomSheetBehavior.BottomSheetCallback() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
                 var layoutParams = layoutBottomSheet.layoutParams as ViewGroup.MarginLayoutParams
                 if (newState == BottomSheetBehavior.STATE_COLLAPSED)
@@ -202,18 +202,19 @@ class HomeFragment : Fragment() {
                 }
             }
 
-                override fun onSlide(bottomSheet: View, slideOffset: Float) {
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {
 
-                }
+            }
 
-            })
+        })
     }
 
     private fun clickListeners() {
-        searchBox.setOnClickListener(View.OnClickListener {
+
+        binding.searchText.setOnClickListener(View.OnClickListener {
             goToSearch()
         })
-        txt_moreAiring.setOnClickListener(View.OnClickListener {
+        binding.moreAiring.setOnClickListener(View.OnClickListener {
             showMore(More.AIRING)
         })
 
@@ -258,15 +259,17 @@ class HomeFragment : Fragment() {
     }
 
 
-
     private fun fetchTopAnimes() {
         lifecycleScope.launch {
             homeViewModel.animeAiring.observe(viewLifecycleOwner, { anime ->
                 if (anime.isNotEmpty()) {
                     topAiringAdapter.setData(anime)
-                    txt_moreAiring.visibility = View.VISIBLE
+                    /*txt_moreAiring.visibility = View.VISIBLE
                     titleAiring.visibility = View.VISIBLE
-                    progressViewAiring.visibility = View.GONE
+                    progressViewAiring.gone()*/
+                    binding.progressViewAiring.gone()
+                    binding.topAiringText.visible()
+                    binding.moreAiring.visible()
                     imgTrending.load(anime[0].imageUrl)
                     imgTrending2.load(anime[1].imageUrl)
                     imgTrending3.load(anime[2].imageUrl)
@@ -306,13 +309,12 @@ class HomeFragment : Fragment() {
         lifecycleScope.launch {
             homeViewModel.animeOva.observe(viewLifecycleOwner, { anime ->
                 if (anime.isNotEmpty()) {
-                    //topOvaAdapter.setData(anime)
                     viewPagerAdapter = LoopAnimeAdapter(
                         requireContext(),
                         anime as ArrayList<AnimeListResponse>, true
                     ) { id -> showDetail(id) }
                     viewPager.adapter = viewPagerAdapter
-                    progressViewOva.visibility = View.GONE
+                    progressViewOva.gone()
                 }
             })
         }
@@ -322,7 +324,7 @@ class HomeFragment : Fragment() {
 
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId){
+        return when (item.itemId) {
             R.id.day_dark -> {
                 item.isChecked = !item.isChecked
                 setUIMode(item, item.isChecked)

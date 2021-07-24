@@ -1,4 +1,4 @@
-package com.shid.mangalist.data.di
+package com.shid.animelistcleanarchitecture.core.di
 
 import com.shid.animelistcleanarchitecture.core.remote.RemoteDataSource
 import com.shid.animelistcleanarchitecture.framework.network.api.ApiServices

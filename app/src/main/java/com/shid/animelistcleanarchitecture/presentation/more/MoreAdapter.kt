@@ -55,18 +55,8 @@ class MoreAdapter (private val activity2:Activity,private val showDetail: (id: I
     inner class MoreViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val image: ImageView = itemView.findViewById(R.id.image)
-        private val txt_score:TextView = itemView.findViewById(R.id.txt_score)
         private val title: TextView = itemView.findViewById(R.id.txt_title)
         private val score: TextView = itemView.findViewById(R.id.score_more)
-       // private val rating: PercentageView = itemView.findViewById(R.id.percentageView)
-
-
-        /*init {
-            itemView.layoutParams = RecyclerView.LayoutParams(
-                getScreenWidth(activity) * 0.85f.toInt(),
-                RecyclerView.LayoutParams.WRAP_CONTENT
-            )
-        }*/
 
 
         fun bindTo(anime: AnimeListResponse) {
@@ -82,7 +72,7 @@ class MoreAdapter (private val activity2:Activity,private val showDetail: (id: I
                   anime.id?.let { it -> showDetail(it) }
                 })
             }
-            // (activity as MainActivity).updateBackground(anime.imageUrl)
+
         }
 
     }

@@ -42,7 +42,6 @@ class VideoAdapter(private val showVideo: (url: String?) -> Unit) :
         RecyclerView.ViewHolder(itemView) {
         private val image_video: ImageView = itemView.findViewById(R.id.image_video)
         fun bind(mPromo: Promo) {
-
             image_video.load(mPromo.imageUrl)
             itemView.setOnClickListener { showVideo(mPromo.videoUrl) }
 

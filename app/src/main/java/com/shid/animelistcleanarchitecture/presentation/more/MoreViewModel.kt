@@ -19,11 +19,6 @@ class MoreViewModel
     val animeAiring: LiveData<List<AnimeListResponse>>
         get() = _animeAiring
 
-   /* val animes: Flow<PagingData<AnimeListResponse>> = Pager(PagingConfig(pageSize = 20)) {
-        AnimePagingSource(apiServices)
-    }.flow
-        .cachedIn(viewModelScope)*/
-
     fun setType(type: String) {
         viewModelScope.launch {
             try {

@@ -24,7 +24,6 @@ class BookmarksFragment : Fragment() {
     private var _binding: FragmentBookmarkBinding? = null
     private val binding get() = _binding!!
 
-
     private val bookmarkViewModel: BookmarksViewModel by viewModels()
     private lateinit var adapter: BookmarkAdapter
 

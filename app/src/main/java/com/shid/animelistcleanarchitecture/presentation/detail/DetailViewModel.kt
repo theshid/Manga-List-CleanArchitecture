@@ -1,12 +1,11 @@
 package com.shid.animelistcleanarchitecture.presentation.detail
 
-import android.util.Log
+
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.shid.animelistcleanarchitecture.framework.database.AnimeDatabase
-import com.shid.animelistcleanarchitecture.framework.database.entities.BookmarkAnime
 import com.shid.animelistcleanarchitecture.framework.network.responses.detail.CharactersListResponse
 import com.shid.animelistcleanarchitecture.framework.network.responses.detail.DetailAnimeResponse
 import com.shid.animelistcleanarchitecture.framework.network.responses.detail.Promo
@@ -60,13 +59,9 @@ class DetailViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             val checkAnime = database.animeDao().exists(animeId)
             Timber.d("value of anime check:$checkAnime")
-
             _isAnimeInDb.postValue(database.animeDao().exists(animeId))
-
-
             Timber.d("value of anime:${isAnimeInDb.value}")
         }
-
 
     }
 

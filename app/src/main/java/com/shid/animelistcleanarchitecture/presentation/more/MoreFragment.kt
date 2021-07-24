@@ -23,7 +23,6 @@ import www.sanju.zoomrecyclerlayout.ZoomRecyclerLayout
 @AndroidEntryPoint
 class MoreFragment : BaseFragment() {
     private val moreViewModel: MoreViewModel by viewModels()
-    private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: MoreAdapter
 
     private var _binding: MoreFragment2Binding?=null

@@ -9,7 +9,7 @@ import com.shid.animelistcleanarchitecture.framework.database.AnimeDatabase
 import com.shid.animelistcleanarchitecture.framework.network.responses.detail.CharactersListResponse
 import com.shid.animelistcleanarchitecture.framework.network.responses.detail.DetailAnimeResponse
 import com.shid.animelistcleanarchitecture.framework.network.responses.detail.Promo
-import com.shid.animelistcleanarchitecture.core.repository.DetailAnimeRepository
+import com.shid.animelistcleanarchitecture.framework.repository_implementation.DetailAnimeRepository
 import com.shid.animelistcleanarchitecture.core.use_cases.SaveFavorite
 import com.shid.animelistcleanarchitecture.core.use_cases.UnsetFavorite
 import dagger.hilt.android.lifecycle.HiltViewModel

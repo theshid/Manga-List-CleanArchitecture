@@ -2,8 +2,8 @@ package com.shid.animelistcleanarchitecture.core.di
 
 import com.shid.animelistcleanarchitecture.core.remote.RemoteDataSource
 import com.shid.animelistcleanarchitecture.framework.network.api.ApiServices
-import com.shid.animelistcleanarchitecture.core.repository.DetailAnimeRepository
-import com.shid.animelistcleanarchitecture.core.repository.SearchAnimeRepository
+import com.shid.animelistcleanarchitecture.framework.repository_implementation.DetailAnimeRepository
+import com.shid.animelistcleanarchitecture.framework.repository_implementation.SearchAnimeRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,6 +1,6 @@
 package com.shid.animelistcleanarchitecture.core.use_cases
 
-import com.shid.animelistcleanarchitecture.core.repository.IAnimeRepository
+import com.shid.animelistcleanarchitecture.framework.repository_implementation.IAnimeRepository
 import com.shid.animelistcleanarchitecture.framework.database.entities.BookmarkAnime
 import com.shid.animelistcleanarchitecture.framework.network.responses.detail.DetailAnimeResponse
 import javax.inject.Inject

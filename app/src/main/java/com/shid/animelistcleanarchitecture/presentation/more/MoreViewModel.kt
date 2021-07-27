@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.shid.animelistcleanarchitecture.framework.network.responses.main_response.AnimeListResponse
-import com.shid.animelistcleanarchitecture.core.repository.IAnimeRepository
+import com.shid.animelistcleanarchitecture.framework.repository_implementation.IAnimeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

@@ -1,5 +1,6 @@
-package com.shid.animelistcleanarchitecture.core.repository
+package com.shid.animelistcleanarchitecture.framework.repository_implementation
 
+import com.shid.animelistcleanarchitecture.core.domain.repository.AnimeRepository
 import com.shid.animelistcleanarchitecture.core.remote.RemoteDataSource
 import com.shid.animelistcleanarchitecture.framework.database.AnimeDatabase
 import com.shid.animelistcleanarchitecture.framework.database.entities.BookmarkAnime

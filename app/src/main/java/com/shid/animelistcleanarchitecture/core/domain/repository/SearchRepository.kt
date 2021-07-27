@@ -1,4 +1,4 @@
-package com.shid.animelistcleanarchitecture.core.repository
+package com.shid.animelistcleanarchitecture.core.domain.repository
 
 import com.shid.animelistcleanarchitecture.framework.network.responses.main_response.AnimeListResponse
 
